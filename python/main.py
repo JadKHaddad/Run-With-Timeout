@@ -40,6 +40,13 @@ def err(arg1, arg2):
     raise ValueError("A very bad error my friend :>")
 
 
+def looping(arg1, arg2):
+    print(arg1, arg2)
+    while True:
+        time.sleep(1)
+        print("looping")
+
+
 if __name__ == "__main__":
     try:
         result = run_with_timeout(err, 3, "I am Error", ":D")
@@ -60,3 +67,14 @@ if __name__ == "__main__":
         print(result)
     except Empty:
         print("Timeout")
+
+    # Notice that `looping` will timeout, but will keep on looping, so `run_with_timeout` will not terminate the thread
+    # Connection delays, etc. will cause a timeout, but the thread will keep on running until it is FINISHED!
+    # Getting `Timeout` means that the program has ignored the thread, the thread is not FINISHED!
+    # Use with caution!
+    try:
+        result = run_with_timeout(looping, 3, "I am a Loop", ":/")
+        print(result)
+    except Empty:
+        print("Timeout")
+    time.sleep(10)
