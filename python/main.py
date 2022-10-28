@@ -68,7 +68,7 @@ if __name__ == "__main__":
     except Empty:
         print("Timeout")
 
-    # Notice that `looping` will timeout, but will keep on looping, so `run_with_timeout` will not terminate the thread
+    # Notice that `looping` will time out, but will keep on looping, so `run_with_timeout` will not terminate the thread
     # Connection delays, etc. will cause a timeout, but the thread will keep on running until it is FINISHED!
     # Getting `Timeout` means that the program has ignored the thread, the thread is not FINISHED!
     # Use with caution!
