@@ -33,8 +33,6 @@ public class Main {
         try {
             R result = future.get(timeout, TimeUnit.SECONDS);
             return result;
-        } catch (TimeoutException e) {
-            throw new TimeoutException();
         } finally {
             executor.shutdown();
         }
