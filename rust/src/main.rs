@@ -84,13 +84,7 @@ fn main() {
     println!("Result: {:?}", result);
 
     // This will timeout (Custom type)
-    let result = run_with_timeout(
-        || {
-            thread::sleep(Duration::from_secs(2));
-            return_foo()
-        },
-        Duration::from_secs(1),
-    );
+    let result = run_with_timeout(|| return_foo(), Duration::from_secs(1));
     println!("Result: {:?}", result);
 
     // This will not timeout (Custom type)
