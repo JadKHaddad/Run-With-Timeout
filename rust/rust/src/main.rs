@@ -70,7 +70,7 @@ fn looping() -> ! {
 }
 
 fn main() {
-    // This will timeout
+    // This will time out
     let result = run_with_timeout(
         || {
             thread::sleep(Duration::from_secs(2));
@@ -80,7 +80,7 @@ fn main() {
     );
     println!("Result: {:?}", result);
 
-    // This will not timeout
+    // This will not time out
     let result = run_with_timeout(
         || {
             thread::sleep(Duration::from_secs(2));
@@ -90,11 +90,11 @@ fn main() {
     );
     println!("Result: {:?}", result);
 
-    // This will timeout (Custom type)
+    // This will time out (Custom type)
     let result = run_with_timeout(|| return_foo(), Duration::from_secs(1));
     println!("Result: {:?}", result);
 
-    // This will not timeout (Custom type)
+    // This will not time out (Custom type)
     let result = run_with_timeout(|| return_foo(), Duration::from_secs(3));
     println!("Result: {:?}", result);
 
@@ -112,6 +112,7 @@ fn main() {
     // Connection delays, etc. will cause a timeout, but the thread will keep on running until it is FINISHED!
     // Getting `TimeoutError` means that the program has ignored the thread, the thread is not FINISHED!
     // Use with caution!
+    // Use Tokio instead!
     println!("Result: {:?}", result);
     thread::sleep(Duration::from_secs(10));
 }
