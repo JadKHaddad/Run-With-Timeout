@@ -54,6 +54,16 @@ async def main():
         print(result)
     except TimeoutError:
         print("Timeout")
+
+    try:
+        # This will not terminate
+        result = await asyncio.wait_for(asyncio.shield(
+            looping("I am a Loop with a SHIELD", ":P")),
+                                        timeout=3)
+        print(result)
+    except TimeoutError:
+        print("Timeout")
+
     await asyncio.sleep(10)
 
 
