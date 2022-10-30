@@ -114,5 +114,12 @@ fn main() {
     // Use with caution!
     // Use Tokio instead!
     println!("Result: {:?}", result);
+    match result {
+        Ok(_) => {}
+        Err(_) => {
+            // You can still exit though
+            // std::process::exit(1)
+        }
+    }
     thread::sleep(Duration::from_secs(10));
 }

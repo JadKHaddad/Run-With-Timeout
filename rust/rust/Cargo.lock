@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "function_timeout"
+name = "run_with_timeout"
 version = "0.1.0"

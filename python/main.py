@@ -72,9 +72,12 @@ if __name__ == "__main__":
     # Connection delays, etc. will cause a timeout, but the thread will keep on running until it is FINISHED!
     # Getting `Timeout` means that the program has ignored the thread, the thread is not FINISHED!
     # Use with caution!
+    # Use Asyncio instead!
     try:
         result = run_with_timeout(looping, 3, "I am a Loop", ":/")
         print(result)
     except Empty:
         print("Timeout")
+        # You can still exit though
+        # exit(1)
     time.sleep(10)
