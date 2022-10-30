@@ -28,13 +28,13 @@ async fn return_foo() -> Foo {
     }
 }
 
-async fn err() -> Result<String, Box<dyn Error + Send + Sync>> {
+async fn err() -> Result<String, Box<dyn Error>> {
     sleep(Duration::from_secs(2)).await;
     let result = std::fs::read_to_string("not_there.txt")?;
     Ok(result)
 }
 
-async fn scc() -> Result<String, Box<dyn Error + Send + Sync>> {
+async fn scc() -> Result<String, Box<dyn Error>> {
     sleep(Duration::from_secs(2)).await;
     let result = std::fs::read_to_string("there.txt")?;
     Ok(result)
